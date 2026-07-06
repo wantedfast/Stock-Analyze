@@ -122,8 +122,8 @@
       <h1>Stock Analyze</h1>
       <form id="form">
         <textarea id="prompt" placeholder="输入要发送给 Codex 的提示词"></textarea>
-        <input id="skillName" placeholder="可选 skill 名称，例如 stock-reverse-engineering">
-        <input id="skillPath" placeholder="可选 skill 路径，例如 C:\Users\<你>\.codex\skills\stock-reverse-engineering\SKILL.md">
+        <input id="skillName" value="stock-reverse-engineering" placeholder="可选 skill 名称">
+        <input id="skillPath" value=".\skills\stock-reverse-engineering\SKILL.md" placeholder="可选 skill 路径">
         <div class="row">
           <input id="token" type="password" placeholder="可选 Bearer token">
           <button id="send" type="submit">Send</button>

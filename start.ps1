@@ -1,6 +1,7 @@
 param(
   [switch]$Mock,
   [switch]$WorkspaceWrite,
+  [switch]$StockSkill,
   [string]$Port = "",
   [string]$SkillName = "",
   [string]$SkillPath = ""
@@ -62,5 +63,11 @@ $env:CODEX_SANDBOX = if ($WorkspaceWrite) { "workspaceWrite" } elseif ($env:CODE
 
 if ($SkillName) { $env:CODEX_SKILL_NAME = $SkillName }
 if ($SkillPath) { $env:CODEX_SKILL_PATH = $SkillPath }
+
+$vendoredStockSkill = Join-Path $PSScriptRoot "skills\stock-reverse-engineering\SKILL.md"
+if ($StockSkill -and (Test-Path -LiteralPath $vendoredStockSkill)) {
+  $env:CODEX_SKILL_NAME = "stock-reverse-engineering"
+  $env:CODEX_SKILL_PATH = $vendoredStockSkill
+}
 
 & $node (Join-Path $PSScriptRoot "server.mjs")

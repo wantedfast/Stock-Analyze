@@ -44,7 +44,7 @@ const server = http.createServer(async (request, response) => {
       const body = await readJsonBody(request);
       const prompt = String(body.prompt || "").trim();
       const skillName = String(body.skillName || defaultSkillName || "").trim();
-      const skillPath = String(body.skillPath || defaultSkillPath || "").trim();
+      const skillPath = normalizeSkillPath(String(body.skillPath || defaultSkillPath || "").trim());
       if (!prompt) {
         sendJson(response, 400, { error: "missing prompt" });
         return;
@@ -253,6 +253,11 @@ function buildUserInput(prompt, options = {}) {
     input.push({ type: "skill", name: options.skillName, path: options.skillPath });
   }
   return input;
+}
+
+function normalizeSkillPath(skillPath) {
+  if (!skillPath) return "";
+  return path.isAbsolute(skillPath) ? skillPath : path.resolve(__dirname, skillPath);
 }
 
 function buildSandboxPolicy() {

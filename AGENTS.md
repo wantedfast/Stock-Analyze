@@ -29,6 +29,7 @@ If `node` is not on PATH, use the bundled Node executable from the Codex runtime
 - `docs/`: operational notes and protocol notes.
 - `tools/`: deterministic helper scripts.
 - `assets/`: reserved for UI or documentation assets.
+- `skills/stock-reverse-engineering/`: vendored stock-analysis Codex skill.
 
 ## Coding Conventions
 

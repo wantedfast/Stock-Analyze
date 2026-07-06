@@ -25,6 +25,12 @@ Use mock mode first to verify Node and the web UI:
 .\start.ps1 -Mock
 ```
 
+Use `-StockSkill` to inject the vendored stock skill by default:
+
+```text
+.\start.ps1 -StockSkill
+```
+
 Then test real mode:
 
 ```powershell
